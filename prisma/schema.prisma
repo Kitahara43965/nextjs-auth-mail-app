@@ -8,10 +8,22 @@ datasource db {
 }
 
 model User {
+  id                  String   @id @default(cuid())
+  email               String   @unique
+  password            String
+  name                String
+  login_time_number   Int      @default(0)
+  is_email_verified   Boolean  @default(false)
+  createdAt           DateTime @default(now())
+
+  EmailVerificationToken EmailVerificationToken[]
+}
+
+model EmailVerificationToken {
   id        String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  name      String
-  login_time_number Int     @default(0)
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
   createdAt DateTime @default(now())
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
