@@ -38,6 +38,17 @@ const handler = NextAuth({
           return null;
         }
 
+        const updatedUser = await prisma.user.update({
+          where: {
+            id: user.id,
+          },
+          data: {
+            login_time_number: {
+              increment: 1,
+            },
+          },
+        });
+
         await transporter.sendMail({
           from: "no-reply@example.com",
           to: user.email,
