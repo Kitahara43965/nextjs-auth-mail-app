@@ -31,17 +31,21 @@ Are you sure you want to reset your database? All data will be lost.<br>
 $ npm install nodemailer<br>
 $ npm install -D @types/nodemailer<br>
 
-(*) mailhog起動のために別途terminalを立ち上げる<br>
+(8) mailhog起動のために別途terminalを立ち上げる<br>
 現在のプロジェクト直下(名称を変更していなければnextjs-auth-mail-app)で<br>
 mailhogをインストールしていない場合はbrew経由でインストール<br>
 $ brew install go<br>
 $ brew install mailhog<br>
 以下のコマンドでmailhog立ち上げ<br>
 $ mailhog<br>
-
-(8) サーバー立ち上げ <br>
+<br>
+(9) prismaを生成<br>
+$ npx prisma db push<br>
+$ npx prisma generate<br>
+<br>
+(10) サーバー立ち上げ <br>
 $ npm run devでサーバーを立ち上げます。<br>
-
+<br>
 登録画面：localhost:3000/register<br>
 ログイン画面： localhost:3000/login<br>
 ダッシュボード画面：localhost:3000/dashboard<br>
